@@ -82,7 +82,7 @@ std::tuple<int, double, std::vector<int> > bfs(const std::vector<int>& a){
     std::vector<int> max_matr = a;
     int k = 0;
     while (!que.empty()){
-#ifdef _DEBUG
+#ifdef _TEST
         std::cerr << ++k << std::endl;
 #endif
         std::vector<int> cur;
@@ -127,27 +127,30 @@ std::tuple<int, double, std::vector<int> > bfs(const std::vector<int>& a){
 }
 
 int main() {
-#ifdef _DEBUG
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+#ifdef _TEST
+    freopen("../input.txt", "r", stdin);
+    freopen("../output.txt", "w", stdout);
+    while (!std::cin.eof()) {
 #endif
-    int n;
-    std::cin >> n;
-    std::vector < int > a(n * n, 0);
-    for (size_t i = 0; i < n; ++i){
-        for (size_t j = 0; j < n; ++j){
-            std::cin >> a[i * n + j];
+        int n;
+        std::cin >> n;
+        std::vector<int> a(n * n, 0);
+        for (size_t i = 0; i < n; ++i) {
+            for (size_t j = 0; j < n; ++j) {
+                std::cin >> a[i * n + j];
+            }
         }
-    }
-    std::cout << "Matrix:\n";
-    auto ans = bfs(a);
-    for (size_t i = 0; i < n; ++i){
-        for (size_t j = 0; j < n; ++j){
-            std::cout << std::get<2>(ans)[i * n + j] << " ";
+        std::cout << "Matrix:\n";
+        auto ans = bfs(a);
+        for (size_t i = 0; i < n; ++i) {
+            for (size_t j = 0; j < n; ++j) {
+                std::cout << std::get<2>(ans)[i * n + j] << " ";
+            }
+            std::cout << "\n";
         }
-        std::cout << "\n";
+        std::cout << "Max det abs: " << std::get<1>(ans) << "\nMin steps:" << std::get<0>(ans) << std::endl;
+#ifdef _TEST
     }
-    std::cout << "Max det abs: " << std::get<1>(ans) << "\nMin steps:" << std::get<0>(ans) << std::endl;
-
+#endif
     return 0;
 }
