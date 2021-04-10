@@ -119,6 +119,7 @@ std::tuple<int, double, std::vector<int> > bfs(const std::vector<int>& a){
                         que.emplace_back(cur, dst + 1);
                         dist[s] = dst + 1;
                     }
+                    SwapRelativeNonMainDiagonal(cur, x, y, k);
                 }
             }
         }
