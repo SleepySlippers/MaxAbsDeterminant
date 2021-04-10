@@ -149,7 +149,7 @@ int main() {
             }
             std::cout << "\n";
         }
-        std::cout << "Max det abs: " << std::get<1>(ans) << "\nMin steps:" << std::get<0>(ans) << std::endl;
+        std::cout << "Max det abs: " << std::get<1>(ans) << "\nMin steps: " << std::get<0>(ans) << std::endl;
 #ifdef _TEST
     }
 #endif
